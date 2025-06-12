@@ -46,9 +46,40 @@
                 line-height: normal !important;
                 padding: 0 !important;
             }
+            #loader-overlay {
+                position: fixed;
+                z-index: 9999;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #181818;
+                color: #00ffe7;
+                flex-direction: column;
+                transition: transform 1s cubic-bezier(0.77,0,0.175,1), opacity 0.5s;
+                will-change: transform, opacity;
+            }
+            #loader-overlay.slide-up {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+            #loader-text {
+                font-size: 6em;
+                font-weight: 900;
+                letter-spacing: 4px;
+                text-shadow: 4px 4px 16px #222, 0 0 24px #00ffe7;
+                transition: font-size 0.3s;
+            }
         </style>
     </head>
     <body class="is-preload">
+        <!-- Loader Overlay -->
+        <div id="loader-overlay">
+            <span id="loader-text">Hello</span>
+        </div>
 
         <!-- Wrapper -->
             <div id="wrapper">
@@ -170,6 +201,43 @@ Explore my portfolio to see the projects I’ve brought to life, and feel free t
             <script src="assets/js/breakpoints.min.js"></script>
             <script src="assets/js/util.js"></script>
             <script src="assets/js/main.js"></script>
+            <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const loaderOverlay = document.getElementById('loader-overlay');
+    const loaderText = document.getElementById('loader-text');
+    const hellos = [
+        "Hello",           // English
+        "Hola",            // Spanish
+        "Bonjour",         // French
+        "Ciao",            // Italian
+        "Hallo",           // German
+        "こんにちは"         // Japanese
+    ];
+    let i = 0;
+
+    setTimeout(() => {
+        // Show "Hello" in 5 different languages quickly
+        let interval = setInterval(() => {
+            i++;
+            if (i < hellos.length) {
+                loaderText.textContent = hellos[i];
+            } else {
+                clearInterval(interval);
+                // Show "Welcome"
+                loaderText.textContent = "Welcome.";
+                setTimeout(() => {
+                    // Slide the overlay up
+                    loaderOverlay.classList.add('slide-up');
+                    // Optional: remove overlay from DOM after animation
+                    setTimeout(() => {
+                        loaderOverlay.style.display = "none";
+                    }, 1000);
+                }, 1500);
+            }
+        }, 170); // Fast switch (0.17s per language)
+    }, 1500); // Initial 1.5s delay on "Hello"
+});
+</script>
 
     </body>
 </html>
