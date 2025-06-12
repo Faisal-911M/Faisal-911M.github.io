@@ -8,6 +8,45 @@
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
         <!-- Add the favicon -->
         <link rel="icon" type="image/png" href="images/Lama.jpg" />
+        <style>
+            /* Add this style block inside your <head> or main CSS file */
+            .project-link {
+                color: #00ffe7;
+                text-decoration: none;
+                font-weight: bold;
+                transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+                border-radius: 6px;
+                padding: 2px 6px;
+            }
+            .project-link:hover {
+                background: #222;
+                color: #fff;
+                box-shadow: 0 0 8px #00ffe7, 0 0 2px #fff;
+                text-decoration: underline;
+            }
+            /* Add to your <style> block in <head> */
+            .big-icons .icon {
+                font-size: 3em !important;
+            }
+            .big-icons {
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+                margin: 40px 0;
+            }
+            .icons .icon {
+                background: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                width: auto !important;
+                height: auto !important;
+                line-height: normal !important;
+                padding: 0 !important;
+            }
+        </style>
     </head>
     <body class="is-preload">
 
@@ -22,16 +61,16 @@
                         </div>
                         <div class="content">
                             <div class="inner">
-                                <h1>PixelToPlay</h1>
-                                <p>Welcome to my world of gaming! I’m a passionate game developer creating immersive experiences.<br />
-                                Explore my projects and connect with me to bring your gaming ideas to life.</p>
+                                <h1 style="font-weight: bold; font-size: 3em; letter-spacing: 2px; text-shadow: 2px 2px 8px #222, 0 0 10px #00ffe7;">Pixel To Play</h1>
+                                <p>Welcome to my world of gaming and app development! I’m a dedicated developer with a passion for building immersive games and innovative mobile apps.<br />
+Explore my portfolio to see the projects I’ve brought to life, and feel free to connect if you want to collaborate or turn your ideas into reality.</p>
                             </div>
                         </div>
                         <nav>
                             <ul>
-                                <li><a href="#intro">Intro</a></li>
-                                <li><a href="#work">Games</a></li>
-                                <li><a href="#about">About</a></li>
+                                <!-- <li><a href="#intro">Intro</a></li> -->
+                                <li><a href="#work">Projects</a></li>
+                                <!-- <li><a href="#about">About</a></li> -->
                                 <li><a href="#contact">Contact</a></li>
                             </ul>
                         </nav>
@@ -51,12 +90,34 @@
                         <!-- Work -->
                             <article id="work">
                                 <h2 class="major">Games</h2>
-                                <span class="image main"><img src="images/pic02.jpg" alt="My Games" /></span>
+                                <!-- <span class="image main"><img src="images/pic02.jpg" alt="My Games" /></span> -->
                                 <p>Here are some of the games I’ve developed:</p>
                                 <ul>
-                                    <li><strong>Pixel Quest:</strong> A retro-style platformer with challenging levels.</li>
-                                    <li><strong>Galaxy Defender:</strong> A space shooter where you defend the galaxy from alien invasions.</li>
-                                    <li><strong>Puzzle Crafter:</strong> A creative puzzle game that tests your problem-solving skills.</li>
+                                    <li style="margin-bottom: 18px;">
+                                        <a href="https://apps.apple.com/us/app/tumble-dude-fall-3d/id1616517529?platform=iphone" target="_blank" class="project-link">
+                                            <strong>Tumble Fall:</strong> Fall Guys–style physics-based multiplayer runner game.
+                                        </a>
+                                    </li>
+                                    <li style="margin-bottom: 18px;">
+                                        <a href="https://play.google.com/store/apps/details?id=com.fts.cosmicollapsegame&hl=en" target="_blank" class="project-link">
+                                            <strong>Cosmic Collapse:</strong> One-hand casual space game where ships auto-orbit planets and collect resources.
+                                        </a>
+                                    </li>
+                                    <li style="margin-bottom: 18px;">
+                                        <a href="https://play.google.com/store/apps/details?id=com.fasttech.policevsgangster&hl=en" target="_blank" class="project-link">
+                                            <strong>Police StrikeForce:</strong> Top-down shooting game featuring multiple characters, enemies, and weapons.
+                                        </a>
+                                    </li>
+                                    <li style="margin-bottom: 18px;">
+                                        <a href="https://play.google.com/store/apps/details?id=com.fts.pocketracergame&hl=en" target="_blank" class="project-link">
+                                            <strong>Pocket Racer:</strong> Mario Kart–style arcade racing game with drift and boost mechanics.
+                                        </a>
+                                    </li>
+                                    <li style="margin-bottom: 18px;">
+                                        <a href="https://play.google.com/store/apps/details?id=com.fts.crazysupermarketrunninggame&hl=en" target="_blank" class="project-link">
+                                            <strong>Crazy Supermarket Running Game:</strong> Hyper-casual runner game where players collect groceries and sell them for profit.
+                                        </a>
+                                    </li>
                                 </ul>
                                 <p>Stay tuned for more exciting projects!</p>
                             </article>
@@ -71,32 +132,23 @@
                         <!-- Contact -->
                             <article id="contact">
                                 <h2 class="major">Contact</h2>
-                                <p>Have a project in mind or just want to say hi? Feel free to reach out!</p>
-                                <form method="post" action="#">
-                                    <div class="fields">
-                                        <div class="field half">
-                                            <label for="name">Name</label>
-                                            <input type="text" name="name" id="name" />
-                                        </div>
-                                        <div class="field half">
-                                            <label for="email">Email</label>
-                                            <input type="text" name="email" id="email" />
-                                        </div>
-                                        <div class="field">
-                                            <label for="message">Message</label>
-                                            <textarea name="message" id="message" rows="4"></textarea>
-                                        </div>
-                                    </div>
-                                    <ul class="actions">
-                                        <li><input type="submit" value="Send Message" class="primary" /></li>
-                                        <li><input type="reset" value="Reset" /></li>
-                                    </ul>
-                                </form>
-                                <ul class="icons">
-                                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                                <p>Connect with me on social media:</p>
+                                <ul class="icons big-icons" style="display: flex; gap: 40px; justify-content: center; align-items: center; list-style: none; padding: 0; margin: 40px 0;">
+                                    <li>
+                                        <a href="https://x.com/immortals1122" class="icon brands fa-twitter" target="_blank" style="font-size: 3em;">
+                                            <span class="label">X</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/faisal_ali_47/" class="icon brands fa-instagram" target="_blank" style="font-size: 3em;">
+                                            <span class="label">Instagram</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/Faisal-911M" class="icon brands fa-github" target="_blank" style="font-size: 3em;">
+                                            <span class="label">GitHub</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </article>
 
