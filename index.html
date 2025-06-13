@@ -73,6 +73,33 @@
                 text-shadow: 4px 4px 16px #222, 0 0 24px #00ffe7;
                 transition: font-size 0.3s;
             }
+            .contact-tooltip {
+                display: none;
+                position: absolute;
+                background: #181818;
+                color: #00ffe7;
+                padding: 8px 18px;
+                border-radius: 8px;
+                font-size: 1.1em;
+                font-weight: bold;
+                box-shadow: 0 2px 16px #111;
+                z-index: 10000;
+                pointer-events: none;
+                white-space: nowrap;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 110%;
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+            .icon-link-wrapper {
+                position: relative;
+                display: inline-block;
+            }
+            .icon-link-wrapper:hover .contact-tooltip {
+                display: block;
+                opacity: 1;
+            }
         </style>
     </head>
     <body class="is-preload">
@@ -163,22 +190,39 @@ Explore my portfolio to see the projects I’ve brought to life, and feel free t
                         <!-- Contact -->
                             <article id="contact">
                                 <h2 class="major">Contact</h2>
-                                <p>Connect with me on social media:</p>
+                                <p>Connect with me on social media or email:</p>
                                 <ul class="icons big-icons" style="display: flex; gap: 40px; justify-content: center; align-items: center; list-style: none; padding: 0; margin: 40px 0;">
                                     <li>
-                                        <a href="https://x.com/immortals1122" class="icon brands fa-twitter" target="_blank" style="font-size: 3em;">
-                                            <span class="label">X</span>
-                                        </a>
+                                        <span class="icon-link-wrapper">
+                                            <a href="https://x.com/immortals1122" class="icon brands fa-twitter" target="_blank" style="font-size: 3em;">
+                                                <span class="label">X</span>
+                                            </a>
+                                            <span class="contact-tooltip">https://x.com/immortals1122</span>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a href="https://www.instagram.com/faisal_ali_47/" class="icon brands fa-instagram" target="_blank" style="font-size: 3em;">
-                                            <span class="label">Instagram</span>
-                                        </a>
+                                        <span class="icon-link-wrapper">
+                                            <a href="https://www.instagram.com/faisal_ali_47/" class="icon brands fa-instagram" target="_blank" style="font-size: 3em;">
+                                                <span class="label">Instagram</span>
+                                            </a>
+                                            <span class="contact-tooltip">https://instagram.com/faisal_ali_47</span>
+                                        </span>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Faisal-911M" class="icon brands fa-github" target="_blank" style="font-size: 3em;">
-                                            <span class="label">GitHub</span>
-                                        </a>
+                                        <span class="icon-link-wrapper">
+                                            <a href="https://github.com/Faisal-911M" class="icon brands fa-github" target="_blank" style="font-size: 3em;">
+                                                <span class="label">GitHub</span>
+                                            </a>
+                                            <span class="contact-tooltip">https://github.com/Faisal-911M</span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="icon-link-wrapper">
+                                            <a href="mailto:info@pixeltoplay.me" class="icon solid fa-envelope" style="font-size: 3em;">
+                                                <span class="label">Email</span>
+                                            </a>
+                                            <span class="contact-tooltip">info@pixeltoplay.me</span>
+                                        </span>
                                     </li>
                                 </ul>
                             </article>
@@ -215,6 +259,14 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
     let i = 0;
 
+    // Check if welcome screen was already shown in this session
+    if (sessionStorage.getItem('welcomeShown')) {
+        loaderOverlay.style.display = "none";
+        return;
+    } else {
+        sessionStorage.setItem('welcomeShown', 'true');
+    }
+
     setTimeout(() => {
         // Show "Hello" in 5 different languages quickly
         let interval = setInterval(() => {
@@ -236,6 +288,28 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }, 170); // Fast switch (0.17s per language)
     }, 1500); // Initial 1.5s delay on "Hello"
+});
+</script>
+<script>
+document.querySelectorAll('.icon-link-wrapper').forEach(function(wrapper) {
+    wrapper.addEventListener('touchstart', function(e) {
+        // Hide all other tooltips
+        document.querySelectorAll('.contact-tooltip').forEach(function(tip) {
+            tip.style.display = 'none';
+            tip.style.opacity = 0;
+        });
+        // Show this tooltip
+        var tooltip = wrapper.querySelector('.contact-tooltip');
+        tooltip.style.display = 'block';
+        tooltip.style.opacity = 1;
+        // Hide after 2 seconds
+        setTimeout(function() {
+            tooltip.style.display = 'none';
+            tooltip.style.opacity = 0;
+        }, 2000);
+        // Prevent default to avoid link opening immediately
+        e.preventDefault();
+    });
 });
 </script>
 
